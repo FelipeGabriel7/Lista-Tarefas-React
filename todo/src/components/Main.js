@@ -9,6 +9,25 @@ class Main extends Component {
     index: -1,
   };
 
+  componentDidMount(){
+    const ListaTarefas = JSON.parse(localStorage.getItem('ListaTarefas'))
+
+    if(!ListaTarefas) return;
+
+    this.setState(
+      {ListaTarefas}
+    );
+  }
+
+
+  componentDidUpdate(prevProps , prevState){
+      const { ListaTarefas } = this.state;
+
+      if( ListaTarefas === prevState.ListaTarefas) return;
+
+      localStorage.setItem('ListaTarefas', JSON.stringify(ListaTarefas));
+  }
+
   handleOnSubmit = (e) => {
     e.preventDefault();
     const { ListaTarefas } = this.state;
