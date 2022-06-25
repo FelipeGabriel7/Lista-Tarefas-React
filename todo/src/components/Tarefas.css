@@ -1,0 +1,49 @@
+.tarefas{
+  font-size: 18px;
+  margin-top: 20px;
+  list-style: none;
+}
+
+.tarefas li{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  transition: all 0.4s;
+}
+
+
+.tarefas li:hover{
+  cursor: pointer;
+  background:#3cf3f3;
+}
+
+
+.tarefas li:hover .edit ,
+.tarefas li:hover .remove{
+  color: #000;
+}
+
+.tarefas button{
+  border: none;
+  background: none;
+  font-size: 15px;
+}
+
+.botoesTarefas{
+  display: flex;
+  align-items: center;
+}
+
+.edit{
+  cursor: pointer;
+  transition: all 0.4s;
+  margin-right: 10px;
+  color: rgb(25, 202, 233);
+}
+
+.remove{
+  transition: all 0.5s;
+  cursor: pointer;
+  color: #ff45bf;
+}

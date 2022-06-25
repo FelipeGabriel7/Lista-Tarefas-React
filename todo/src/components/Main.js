@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { FaPlus, FaEdit, FaWindowClose } from "react-icons/fa";
 import "./Main.css";
+import  Form from './Form.js'
+import Tarefas from "./Tarefas";
 
 class Main extends Component {
   state = {
@@ -25,7 +26,7 @@ class Main extends Component {
 
       if( ListaTarefas === prevState.ListaTarefas) return;
 
-      localStorage.setItem('ListaTarefas', JSON.stringify(ListaTarefas));
+      localStorage.setItem('Lista Tarefas', JSON.stringify(ListaTarefas));
   }
 
   handleOnSubmit = (e) => {
@@ -83,36 +84,14 @@ class Main extends Component {
     return (
       <div className="main">
         <h1> Lista de Tarefas </h1>
-        <form className="form" onSubmit={this.handleOnSubmit}>
-          <input type="text" onChange={this.criaTarefa} value={novaTarefa} />
-          <button type="submit">
-            {" "}
-            <FaPlus />
-          </button>
-        </form>
-        <ul className="tarefas">
-          {ListaTarefas.map((tarefa, index) => (
-            <li key={tarefa}>
-              {tarefa}
-              <div className="botoesTarefas">
-                <button>
-                  {" "}
-                  <FaEdit
-                    onClick={(e) => this.editaTarefa(e, index)}
-                    className="edit"
-                  />{" "}
-                </button>
-                <button>
-                  {" "}
-                  <FaWindowClose
-                    onClick={(e) => this.removeTarefa(e, index)}
-                    className="remove"
-                  />{" "}
-                </button>
-              </div>
-            </li>
-          ))}
-        </ul>
+        <Form handleOnSubmit={this.handleOnSubmit}
+              criaTarefa={this.criaTarefa}
+              novaTarefa={novaTarefa}
+          />
+        <Tarefas ListaTarefas={ListaTarefas}
+                  editaTarefa={this.editaTarefa}
+                  removeTarefa={this.removeTarefa}
+            />
       </div>
     );
   }
